@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zero Knowledge and Cardano - Transcript</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.8;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px 30px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .subtitle {
+        font-size: 1.1em;
+        opacity: 0.9;
+      }
+
+      .lang-toggle {
+        background: white;
+        padding: 20px 30px;
+        border-bottom: 2px solid #f0f0f0;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .lang-btn {
+        padding: 12px 32px;
+        border: 2px solid #667eea;
+        background: white;
+        color: #667eea;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .lang-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      }
+
+      .lang-btn.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-color: transparent;
+      }
+
+      .content {
+        padding: 40px 30px;
+      }
+
+      .transcript {
+        display: none;
+      }
+
+      .transcript.active {
+        display: block;
+      }
+
+      .section {
+        margin-bottom: 30px;
+        padding: 25px;
+        background: #f8f9fa;
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
+      }
+
+      .section h2 {
+        color: #667eea;
+        margin-bottom: 15px;
+        font-size: 1.5em;
+      }
+
+      .section p {
+        margin-bottom: 12px;
+        text-align: justify;
+      }
+
+      .speaker {
+        font-weight: 600;
+        color: #764ba2;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      footer {
+        background: #f8f9fa;
+        padding: 20px 30px;
+        text-align: center;
+        color: #666;
+        font-size: 0.9em;
+        border-top: 2px solid #f0f0f0;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+
+        h1 {
+          font-size: 1.6em;
+        }
+
+        .content {
+          padding: 25px 20px;
+        }
+
+        .lang-toggle {
+          flex-direction: column;
+        }
+
+        .lang-btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Zero Knowledge and Cardano</h1>
+        <p class="subtitle">A Quick Overview of ZK on Cardano by Eryx</p>
+      </header>
+
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="switchLang('en', this)">
+          English
+        </button>
+        <button class="lang-btn" onclick="switchLang('ja', this)">
+          日本語
+        </button>
+      </div>
+
+      <div class="content">
+        <!-- English Transcript -->
+        <div id="en" class="transcript active">
+          <div class="section">
+            <h2>Introduction</h2>
+            <span class="speaker">Carlo:</span>
+            <p>
+              Eryx, Zero Knowledge, and Cardano. This is going to be a quick
+              view of everything that's going on with ZK on Cardano. I'm going
+              to start by introducing myself. I am Carlo. I studied mathematics
+              at the University of Buenos Aires, and then I also did my PhD
+              there, and I've been working at Eryx on Web3 topics, particularly
+              ZK, for almost three years now.
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>About Eryx</h2>
+            <p>
+              A bit about Eryx as well. It's a really special company because
+              it's a worker-owned cooperative, meaning that we are both the
+              developers and the owners of the company. We have a Web3 team
+              focused on cryptography and smart contract development, composed
+              of computer scientists and mathematicians such as myself, and we
+              are ZK experts. We've been working with ZK across different
+              ecosystems for three years.
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>What is Zero Knowledge?</h2>
+            <p>
+              A formal definition would be the following: a cryptographic
+              protocol that allows one party to convince another party that a
+              certain statement is true, without revealing any additional
+              information beyond the truth of that statement itself. It does not
+              reveal any underlying data or assumptions; one party simply
+              becomes convinced that the statement is true.
+            </p>
+            <p>
+              So it's a way to prove knowledge without exposing data, which
+              means you can preserve privacy. You can also prove the correct
+              execution of a computer program written in a more or less standard
+              programming language — for instance Haskell, which is the language
+              in which Cardano is built.
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>ZK-SNARKs</h2>
+            <p>
+              All of this can be summarized in the concept of ZK-SNARKs. SNARK
+              is an acronym for:
+            </p>
+            <p>
+              <strong>Zero Knowledge:</strong> It doesn't reveal any information
+              beyond the statement that you are actually proving
+            </p>
+            <p>
+              <strong>Succinct:</strong> Meaning that the proof is small and
+              compact
+            </p>
+            <p>
+              <strong>Non-interactive:</strong> There is no back-and-forth
+              interaction — the proof is a single object that the prover gives
+              to the verifier, and the verifier becomes convinced that the
+              statement is true
+            </p>
+            <p>
+              <strong>Argument of Knowledge:</strong> Ensuring that the
+              statement being proved really corresponds to some underlying
+              knowledge
+            </p>
+            <p>
+              It's ideal for UTXOs because you can include the proof in a
+              transaction and verify it on chain.
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>ZK Protocols in a Blockchain Context</h2>
+            <p>
+              ZK protocols allow us to delegate computations off chain. When
+              you're writing your smart contract, at some point instead of doing
+              all of a certain computation on chain, you can place a verifier
+              there and deploy it. When you're submitting a transaction, you
+              perform the computation on your device, or on a server if it is
+              heavy, then you compute a proof of that computation and send it
+              along with your transaction.
+            </p>
+            <p>
+              The smart contract on chain will process your transaction and, at
+              the point where the heavy computation would normally happen, it
+              simply verifies the proof and then continues. This way, not all of
+              your computation needs to be done on chain; some of it can be
+              safely moved off chain.
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>Benefits of ZK</h2>
+            <h3>1. Scalability</h3>
+            <p>
+              In a ZK protocol, verifying a proof is always cheaper than
+              performing the original computation on chain. You can run very
+              heavy computations off chain, generate a proof of the result, and
+              then only send the proof to be verified on chain. This is what
+              many ZK rollups are doing to scale other blockchains.
+            </p>
+
+            <h3>2. Privacy</h3>
+            <p>
+              Since computation can be done off chain, you can use it to process
+              sensitive inputs such as your private keys, identity information,
+              or healthcare data that you do not want to put on a public
+              blockchain. The sensitive data stays off chain, and only a proof
+              that the computation was done correctly is sent on chain.
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>ZK and Cardano</h2>
+            <p>
+              We think that what ZK brings to the table really strengthens many
+              of Cardano's core values.
+            </p>
+          </div>
+        </div>
+
+        <!-- Japanese Transcript -->
+        <div id="ja" class="transcript">
+          <div class="section">
+            <h2>はじめに</h2>
+            <span class="speaker">カルロ:</span>
+            <p>
+              Eryx、ゼロ知識証明（Zero
+              Knowledge）、そしてCardanoについてお話しします。これは、Cardano上で今起きているZKまわりの動きをざっくり眺めるための短いセッションです。まずは自己紹介から始めます。私はカルロと言います。ブエノスアイレス大学で数学を学び、同大学で博士号も取得しました。ここ約3年間、EryxでWeb3、とくにZK関連の開発に携わっています。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>Eryxについて</h2>
+            <p>
+              Eryxについても少し触れておきます。Eryxはとてもユニークな会社で、労働者協同組合（worker-owned
+              cooperative）です。つまり、私たちは開発者であると同時に、会社のオーナーでもあります。暗号技術やスマートコントラクト開発を行うWeb3チームがあり、私のようなコンピュータサイエンティストや数学者で構成されています。私たちはZKの専門家として、この3年間さまざまなエコシステムでZKに取り組んできました。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>ゼロ知識証明とは？</h2>
+            <p>
+              ゼロ知識証明の形式的な定義は次のようなものです。ある当事者が別の当事者に対して「特定の命題が真である」ことを納得させる暗号プロトコルであり、その命題の真偽に関する情報以外はいっさい明かさない、というものです。つまり、裏にあるデータや前提条件は公開せずに、一方の当事者が「この命題は本当に正しい」と確信できるようにします。
+            </p>
+            <p>
+              これは、データをさらすことなく知識を証明する方法であり、プライバシー保護に役立ちます。また、一般的なプログラミング言語――たとえばCardanoが構築されているHaskellのような言語――で書かれたコンピュータプログラムの実行が正しいことも証明できます。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>ZK-SNARKs</h2>
+            <p>
+              こうしたアイデアは「ZK-SNARK」という概念にまとめられます。SNARKは次の頭字語です。
+            </p>
+            <p>
+              <strong>Zero Knowledge（ゼロ知識）:</strong>
+              実際に証明している命題以外の情報をいっさい明かさないこと
+            </p>
+            <p>
+              <strong>Succinct（簡潔）:</strong>
+              証明が小さく、コンパクトであること
+            </p>
+            <p>
+              <strong>Non-interactive（非対話型）:</strong>
+              対話的なやり取りを必要とせず、証明者が検証者に一度だけ証明を渡すだけで検証が完了すること
+            </p>
+            <p>
+              <strong>Argument of Knowledge（知識の論証）:</strong>
+              証明しようとしている命題が、本当にある知識に基づいていること
+            </p>
+            <p>
+              UTXOモデルとは非常に相性がよく、トランザクションの中に証明を含めてオンチェーンで検証することができます。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>ブロックチェーン文脈でのZKプロトコル</h2>
+            <p>
+              ブロックチェーンの文脈で見ると、ZKプロトコルは計算をオフチェーンに委譲することを可能にします。スマートコントラクトを書くとき、重い計算をすべてオンチェーンで実行する代わりに、その一部を検証器としてコントラクトに埋め込み、デプロイすることができます。
+            </p>
+            <p>
+              トランザクションを送るユーザー側では、計算自体は自分のデバイス、あるいはより重い処理であればサーバーで行い、その結果についての証明を作成してトランザクションに添付します。オンチェーンのスマートコントラクトはトランザクションを処理していく中で、本来なら重い計算を行う箇所で、その証明を検証するだけにして処理を続けることができます。つまり、すべての計算をオンチェーンでやる必要はなく、一部をオフチェーンに逃がすことができるのです。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>ZKの利点</h2>
+            <h3>1. スケーラビリティ</h3>
+            <p>
+              ZKプロトコルでは、証明の検証コストは元の計算そのものをオンチェーンで実行するよりも常に安く済みます。重い計算はオフチェーンで行い、その結果についての証明だけを作ってオンチェーンで検証させる。このアプローチは、多くのZKロールアップが他のブロックチェーンをスケールさせるために採用しているものです。
+            </p>
+
+            <h3>2. プライバシー</h3>
+            <p>
+              さらに、計算をオフチェーンで行えるため、秘密鍵や本人確認情報、公開したくない医療データなどのセンシティブな入力を安全に扱うことができます。機密データはオフチェーンで処理し、オンチェーンには「計算が正しく行われた」ということを示す証明だけを送ればよいのです。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>ZKとCardano</h2>
+            <p>
+              私たちは、ZKがもたらす機能は、Cardanoが大切にしている多くのコアバリューをいっそう強化するものだと考えています。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          Zero Knowledge and Cardano - Transcript page (unofficial, by Eryx)
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function switchLang(lang, btn) {
+        // Hide all transcripts
+        const transcripts = document.querySelectorAll(".transcript");
+        transcripts.forEach((t) => t.classList.remove("active"));
+
+        // Show selected transcript
+        document.getElementById(lang).classList.add("active");
+
+        // Update button states
+        const buttons = document.querySelectorAll(".lang-btn");
+        buttons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+      }
+    </script>
+  </body>
+</html>
