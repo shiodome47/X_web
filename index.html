@@ -31,7 +31,7 @@
       }
 
       header {
-        background: #0f172a; /* ダークネイビーで落ち着いた感じに */
+        background: #0f172a;
         color: white;
         padding: 32px 28px 28px;
         text-align: center;
@@ -104,10 +104,11 @@
         display: flex;
         justify-content: center;
         gap: 12px;
+        flex-wrap: wrap;
       }
 
       .lang-btn {
-        padding: 10px 26px;
+        padding: 10px 24px;
         border: 1px solid #111827;
         background: white;
         color: #111827;
@@ -146,7 +147,7 @@
         padding: 22px 20px;
         background: #f8fafc;
         border-radius: 12px;
-        border-left: 4px solid #0ea5e9; /* アクセントは淡いシアン系 */
+        border-left: 4px solid #0ea5e9;
       }
 
       .section h2 {
@@ -259,6 +260,9 @@
         </button>
         <button class="lang-btn" onclick="switchLang('ja', this)">
           日本語
+        </button>
+        <button class="lang-btn" onclick="switchLang('ja-simple', this)">
+          やさしい解説
         </button>
       </div>
 
@@ -439,7 +443,7 @@
             </p>
             <p>
               <strong>Argument of Knowledge（知識の論証）:</strong>
-              証明しようとしている命題が、本当にある知識に基づいていること
+              説明しようとしている命題が、本当にある知識に基づいていること
             </p>
             <p>
               UTXOモデルとは非常に相性がよく、トランザクションの中に証明を含めてオンチェーンで検証することができます。
@@ -476,11 +480,185 @@
             </p>
           </div>
         </div>
+
+        <!-- Simple Japanese / Feynman-style -->
+        <div id="ja-simple" class="transcript">
+          <div class="section">
+            <h2>ゼロ知識証明ってなに？（かんたん版）</h2>
+            <p>
+              ゼロ知識証明を、できるだけやさしく説明してみます。
+              「中学生の自分に説明する」つもりで読んでください。
+            </p>
+            <p>
+              ポイントは一つです。
+              <strong
+                >「正しいことは証明するけど、中身のヒミツはバラさない」</strong
+              >
+              という仕組みだ、ということです。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>たとえ話：答えだけ合っているテスト</h2>
+            <p>
+              たとえば、あなたが難しい数学の問題を解けたとします。
+              でも、途中式は見せたくありません。ノートがぐちゃぐちゃだからです。
+            </p>
+            <p>
+              普通は、先生は「途中式も見せて」と言います。
+              なぜなら、本当に自分で解いたかどうか分からないからです。
+            </p>
+            <p>
+              でも、もし「途中式は見せないけれど、本当に自分で解いた」と
+              <strong>先生を納得させる不思議な方法</strong>
+              があったらどうでしょうか？
+            </p>
+            <p>
+              これが、ゼロ知識証明のイメージです。
+              <strong
+                >「ちゃんと合ってることだけ伝える。中身の情報は渡さない」</strong
+              >
+              という技術です。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>ヒミツの鍵のロッカーの例</h2>
+            <p>もう少し具体的なたとえを出します。</p>
+            <p>
+              あなたは、友だちの持っているロッカーの「鍵」を知っています。
+              でも、その鍵は見せたくありません。
+            </p>
+            <p>そこで、あなたはこう言います。</p>
+            <p>
+              「ロッカーを一度だけ開けて、鍵を持っていることを見せるよ。<br />
+              でも鍵そのものは見せないし、コピーも渡さないよ。」
+            </p>
+            <p>ロッカーが本当に開けば、 友だちはこう思います。</p>
+            <p>
+              「あ、この人は本当に鍵を知っているな」<br />
+              でも、友だちは鍵の形も番号も知りません。
+            </p>
+            <p>
+              これがゼロ知識証明です。
+              <strong
+                >「鍵を知っている」という事実だけを証明して、鍵の情報は渡さない</strong
+              >
+              のです。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>ブロックチェーンと相性がいい理由</h2>
+            <p>
+              ブロックチェーンは「みんなが同じデータを見る」仕組みです。
+              なので、そのままだと<strong>プライバシーが守りにくい</strong>ところがあります。
+            </p>
+            <p>そこでゼロ知識証明の出番です。</p>
+            <ul style="margin-left: 1.2em; padding-left: 0.4em">
+              <li>お金の計算が正しいことは証明したい（不正送金は防ぎたい）</li>
+              <li>でも、だれがいくら持っているか、細かい中身は隠したい</li>
+            </ul>
+            <p style="margin-top: 6px">
+              こんなとき、
+              <strong
+                >「計算が正しい」ことだけを証明し、中身の数字は出さない</strong
+              >
+              ということができます。
+            </p>
+            <p>
+              さらに、重い計算をオフチェーン（ブロックチェーンの外）でやって、
+              「ちゃんとやったよ」という証明だけをオンチェーンに載せることもできます。
+              これで、
+              <strong
+                >ブロックチェーンの負担（手数料・処理時間）を軽くする</strong
+              >
+              こともできます。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>ZK-SNARKをざっくり言うと</h2>
+            <p>ZK-SNARK という言葉も、かんたんにだけ触れておきます。</p>
+            <ul style="margin-left: 1.2em; padding-left: 0.4em">
+              <li><strong>Zero Knowledge：</strong> ヒミツはバラさない</li>
+              <li>
+                <strong>Succinct：</strong> 証明が小さい（データ量が少ない）
+              </li>
+              <li>
+                <strong>Non-interactive：</strong>
+                何度もやり取りせず、1回の証明でOK
+              </li>
+              <li>
+                <strong>Argument of Knowledge：</strong>
+                本当に知っている人だけが作れる証明
+              </li>
+            </ul>
+            <p style="margin-top: 6px">
+              ざっくり言えば、
+              <strong>
+                「短くて・一発勝負で・ヒミツを守れる・ちゃんとした証明」
+              </strong>
+              くらいに思っておくとイメージしやすいです。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>Cardanoではどう役に立つ？</h2>
+            <p>
+              Cardanoは、もともと
+              「形式的にしっかりしていること」「安全性」「分散性」
+              を大事にしているチェーンです。
+            </p>
+            <p>そこにゼロ知識証明が加わると、次のようなことが強くなります。</p>
+            <ul style="margin-left: 1.2em; padding-left: 0.4em">
+              <li>重い計算をオフチェーンに逃がして、チェーンを軽くする</li>
+              <li>
+                個人情報やビジネスのヒミツを守りながら、「正しさ」だけをオンチェーンで保証する
+              </li>
+              <li>
+                規制・コンプライアンスにも配慮しながら、プライバシー重視のアプリを作りやすくする
+              </li>
+            </ul>
+            <p style="margin-top: 6px">
+              つまり、
+              <strong>
+                「まじめで安全なCardano」に、「プライバシー」と「スケーラビリティ」という
+                強い武器を足してくれるのがZK
+              </strong>
+              だ、というイメージです。
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>一言でまとめると</h2>
+            <p>
+              ゼロ知識証明とは、
+              <strong
+                >「ヒミツは守ったまま、正しいことだけを世界に証明する技術」</strong
+              >
+              です。
+            </p>
+            <p>
+              そしてそれは、
+              <strong
+                >「みんなで同じ台帳を見る」ブロックチェーンと、とても相性がいい</strong
+              >
+              技術です。
+            </p>
+            <p>
+              CardanoのようなチェーンにZKが入ってくることで、
+              「透明性」と「プライバシー」を同時に追いかける、新しいWeb3の形が作れる。
+              その入口に今いる、と考えるとワクワクしてきます。
+            </p>
+          </div>
+        </div>
       </div>
 
       <footer>
         <p>
-          Unofficial transcript page about a talk by Eryx / 非公式ファンメモ
+          Unofficial transcript &amp; explanation page about a talk by Eryx /
+          非公式ファンメモ
         </p>
       </footer>
     </div>
