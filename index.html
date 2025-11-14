@@ -15,8 +15,8 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Oxygen, Ubuntu, Cantarell, sans-serif;
         line-height: 1.8;
-        color: #333;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #1f2933;
+        background: #e5e7eb;
         min-height: 100vh;
         padding: 20px;
       }
@@ -24,64 +24,113 @@
       .container {
         max-width: 900px;
         margin: 0 auto;
-        background: white;
+        background: #ffffff;
         border-radius: 16px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
         overflow: hidden;
       }
 
       header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #0f172a; /* ダークネイビーで落ち着いた感じに */
         color: white;
-        padding: 40px 30px;
+        padding: 32px 28px 28px;
         text-align: center;
       }
 
       h1 {
-        font-size: 2.2em;
-        margin-bottom: 10px;
+        font-size: 2.1em;
+        margin-bottom: 8px;
         font-weight: 700;
       }
 
       .subtitle {
-        font-size: 1.1em;
+        font-size: 1.05em;
         opacity: 0.9;
       }
 
+      .subtitle span {
+        opacity: 0.8;
+        font-size: 0.95em;
+      }
+
+      .video-section {
+        padding: 20px 28px 12px;
+        background: #f9fafb;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .video-section h2 {
+        font-size: 1.1em;
+        color: #111827;
+        margin-bottom: 6px;
+      }
+
+      .video-section p {
+        font-size: 0.95em;
+        color: #4b5563;
+        margin-bottom: 10px;
+      }
+
+      .video-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        border: 1px solid #111827;
+        background: #111827;
+        color: #f9fafb;
+        font-size: 0.95em;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background 0.2s ease, transform 0.1s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .video-link span.icon {
+        font-size: 1em;
+      }
+
+      .video-link:hover {
+        background: #020617;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(15, 23, 42, 0.3);
+      }
+
       .lang-toggle {
-        background: white;
-        padding: 20px 30px;
-        border-bottom: 2px solid #f0f0f0;
+        background: #f9fafb;
+        padding: 16px 28px 18px;
+        border-bottom: 1px solid #e5e7eb;
         display: flex;
         justify-content: center;
-        gap: 15px;
+        gap: 12px;
       }
 
       .lang-btn {
-        padding: 12px 32px;
-        border: 2px solid #667eea;
+        padding: 10px 26px;
+        border: 1px solid #111827;
         background: white;
-        color: #667eea;
-        border-radius: 25px;
+        color: #111827;
+        border-radius: 999px;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 600;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
       }
 
       .lang-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        transform: translateY(-1px);
+        box-shadow: 0 3px 8px rgba(15, 23, 42, 0.18);
       }
 
       .lang-btn.active {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #111827;
         color: white;
-        border-color: transparent;
+        border-color: #111827;
       }
 
       .content {
-        padding: 40px 30px;
+        padding: 28px 26px 30px;
       }
 
       .transcript {
@@ -93,38 +142,56 @@
       }
 
       .section {
-        margin-bottom: 30px;
-        padding: 25px;
-        background: #f8f9fa;
+        margin-bottom: 26px;
+        padding: 22px 20px;
+        background: #f8fafc;
         border-radius: 12px;
-        border-left: 4px solid #667eea;
+        border-left: 4px solid #0ea5e9; /* アクセントは淡いシアン系 */
       }
 
       .section h2 {
-        color: #667eea;
-        margin-bottom: 15px;
-        font-size: 1.5em;
+        color: #0f172a;
+        margin-bottom: 12px;
+        font-size: 1.4em;
+      }
+
+      .section h3 {
+        color: #111827;
+        margin: 10px 0 6px;
+        font-size: 1.05em;
       }
 
       .section p {
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         text-align: justify;
+        color: #374151;
+        font-size: 0.97em;
       }
 
       .speaker {
         font-weight: 600;
-        color: #764ba2;
-        margin-bottom: 8px;
+        color: #0ea5e9;
+        margin-bottom: 6px;
         display: block;
+        font-size: 0.98em;
       }
 
       footer {
-        background: #f8f9fa;
-        padding: 20px 30px;
+        background: #f9fafb;
+        padding: 16px 24px 18px;
         text-align: center;
-        color: #666;
-        font-size: 0.9em;
-        border-top: 2px solid #f0f0f0;
+        color: #6b7280;
+        font-size: 0.85em;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      footer a {
+        color: #111827;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
       }
 
       @media (max-width: 768px) {
@@ -133,19 +200,28 @@
         }
 
         h1 {
-          font-size: 1.6em;
+          font-size: 1.7em;
         }
 
         .content {
-          padding: 25px 20px;
+          padding: 22px 16px 24px;
+        }
+
+        .video-section {
+          padding: 16px 18px 10px;
         }
 
         .lang-toggle {
+          padding: 14px 18px 16px;
           flex-direction: column;
         }
 
         .lang-btn {
           width: 100%;
+        }
+
+        .section {
+          padding: 18px 16px;
         }
       }
     </style>
@@ -154,8 +230,28 @@
     <div class="container">
       <header>
         <h1>Zero Knowledge and Cardano</h1>
-        <p class="subtitle">A Quick Overview of ZK on Cardano by Eryx</p>
+        <p class="subtitle">
+          A quick overview of ZK on Cardano
+          <span>— based on a talk by Eryx</span>
+        </p>
       </header>
+
+      <div class="video-section">
+        <h2>Watch the talk / 動画を見る</h2>
+        <p>
+          This transcript is based on the following X (Twitter) video. You can
+          open it in a new tab:
+        </p>
+        <a
+          class="video-link"
+          href="https://x.com/i/status/1989038432497115317"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="icon">▶️</span>
+          <span>Open video on X</span>
+        </a>
+      </div>
 
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="switchLang('en', this)">
@@ -384,21 +480,18 @@
 
       <footer>
         <p>
-          Zero Knowledge and Cardano - Transcript page (unofficial, by Eryx)
+          Unofficial transcript page about a talk by Eryx / 非公式ファンメモ
         </p>
       </footer>
     </div>
 
     <script>
       function switchLang(lang, btn) {
-        // Hide all transcripts
         const transcripts = document.querySelectorAll(".transcript");
         transcripts.forEach((t) => t.classList.remove("active"));
 
-        // Show selected transcript
         document.getElementById(lang).classList.add("active");
 
-        // Update button states
         const buttons = document.querySelectorAll(".lang-btn");
         buttons.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
